@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  # webapp:
+  #   build:
+  #     context: ./dir
+  #     dockerfile: Dockerfile-alternate
+  #     args:
+  #       buildno: 1
+  auth:
+    build: jboss/keycloak
+    ports: 
+      - "8080:8080"
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password  
+
