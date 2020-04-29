@@ -53,7 +53,7 @@ export default {
         }).then(response => {
             return response.data
         }).catch(error => {
-            return Promise.reject()
+            return Promise.reject(error)
         })
     },
 
@@ -69,7 +69,7 @@ export default {
             localStorage.setItem('token', JSON.stringify(response.data))
             return response
         }).catch(error => {
-            return Promise.reject()
+            return Promise.reject(error)
         })
     },
   

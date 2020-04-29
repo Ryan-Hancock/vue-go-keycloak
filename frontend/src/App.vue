@@ -37,31 +37,31 @@ export default {
     }
   },
   methods: {
-    logout: function(event) {
+    logout: function() {
       auth.logout()
-      this.$nextTick(rsp => {
+      this.$nextTick(() => {
           this.$router.go();
         })
       this.$router.push({ path:'/login' });
     },
-    refresh: function(event) {
-      auth.refresh().then(rsp => {
+    refresh: function() {
+      auth.refresh().then(() => {
         this.$nextTick(function () {
           this.$router.go()
         })
       })
     },
-    check: function(event) {
+    check: function() {
       auth.checkAuth().then(rsp => {
         console.log(rsp)
         alert("token is valid")
-      }).catch(err => {
+      }).catch(() => {
         alert("token is invalid")
       })
     }
   },
   watch: {
-    token: function (val) {
+    token: function () {
       this.token = auth.getToken()
     }
   }

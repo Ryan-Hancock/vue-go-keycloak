@@ -1,27 +1,29 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import Login from '@/components/Login'
-import Signup from '@/components/Signup'
+import VueRouter from 'vue-router'
+import Hello from '../components/Hello.vue'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '/signup',
-      name: 'Signup',
-      component: Signup
-    }
-  ]
+  const routes = [
+  {
+    path: '/',
+    name: 'Hello',
+    component: Hello
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */ '../components/Login.vue')
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: () => import(/* webpackChunkName: "signup" */ '../components/Signup.vue')
+  }
+]
+
+const router = new VueRouter({
+  routes
 })
+
+export default router

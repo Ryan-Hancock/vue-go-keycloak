@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <h2>Sign Up</h2>
-    <p>Sign up for a free account to get some great quotes.</p>
+    <p>Sign up for a free account</p>
     <div class="alert alert-danger" v-if="error">
       <p>{{ error }}</p>
     </div>
@@ -48,14 +48,9 @@ export default {
   },
   methods: {
     submit() {
-      var credentials = {
-        email: this.credentials.email,
-        username: this.credentials.username,
-        password: this.credentials.password
-      }
-      auth.signup(this.credentials).then(rsp => {
+      auth.signup(this.credentials).then(() => {
         this.$router.push({ path:'/' });
-      }).catch(err => {
+      }).catch(() => {
         alert("was an error creating user")
       })
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="center">
     <h2>Log In</h2>
-    <p>Log in to your account to get some great quotes.</p>
+    <p>Log in to your account</p>
     <div class="alert alert-danger" v-if="error">
       <p>{{ error }}</p>
     </div>
@@ -40,9 +40,9 @@ export default {
   },
   methods: {
     submit() {
-      auth.login(this.credentials).then(response => {
+      auth.login(this.credentials).then(() => {
         console.log(this)
-        this.$nextTick(rsp => {
+        this.$nextTick(() => {
           this.$router.go();
         })
         this.$router.push({ path:'/login' });
